@@ -89,22 +89,24 @@ A EDA foi realizada sobre o dataset CDC Diabetes Health Indicators com o objetiv
 
  - O que foi feito:
 
-  Carga e inspeção inicial — shape, tipos de dados e estatísticas descritivas básicas
-  Verificação de valores faltantes — dataset confirmado como completo (sem nulos)
-  Análise de balanceamento — identificação da proporção diabético/não diabético; o dataset é desbalanceado, o que será tratado na Etapa 3
-  Distribuições — histogramas de BMI, faixa etária, saúde geral e outras variáveis contínuas/ordinais
-  Variáveis binárias — comparação do percentual de hipertensão, colesterol alto e outros fatores entre os dois grupos
-  BMI por grupo — boxplot comparando distribuição de IMC entre diabéticos e não diabéticos
-  Análise de correlações — ranking das variáveis com maior associação à variável-alvo
-  Heatmap de correlações — visão completa das correlações entre todas as variáveis
-  Resumo automático — impressão das principais conclusões no console ao final da execução
+  Carga e inspeção inicial — shape, tipos de dados e estatísticas descritivas básicas, 
+  Verificação de valores faltantes — dataset confirmado como completo (sem nulos), 
+  Análise de balanceamento — identificação da proporção diabético/não diabético; o dataset é desbalanceado, o que será tratado na Etapa 3, 
+  Distribuições — histogramas de BMI, faixa etária, saúde geral e outras variáveis contínuas/ordinais, 
+  Variáveis binárias — comparação do percentual de hipertensão, colesterol alto e outros fatores entre os dois grupos, 
+  BMI por grupo — boxplot comparando distribuição de IMC entre diabéticos e não diabéticos, 
+  Análise de correlações — ranking das variáveis com maior associação à variável-alvo, 
+  Heatmap de correlações — visão completa das correlações entre todas as variáveis, 
+  Resumo automático — impressão das principais conclusões no console ao final da execução.
 
  - Principais achados:
 
-O dataset não possui valores faltantes, dispensando etapas de imputação
-O dataset é desbalanceado: a classe não diabética é majoritária — estratégias como SMOTE ou ajuste de pesos serão consideradas na modelagem
-BMI, HighBP, GenHlth e HighChol apresentam as maiores correlações com a variável-alvo
-Diabéticos tendem a concentrar valores mais altos de BMI e pior percepção de saúde geral
+O dataset não possui valores faltantes, dispensando etapas de imputação, 
+O dataset é desbalanceado: a classe não diabética é majoritária — estratégias como SMOTE ou ajuste de pesos serão consideradas na modelagem, 
+BMI, HighBP, GenHlth e HighChol apresentam as maiores correlações com a variável-alvo, 
+Diabéticos tendem a concentrar valores mais altos de BMI e pior percepção de saúde geral.
+
+
 
 
 Etapa 3 — Pré-processamento e Modelagem
