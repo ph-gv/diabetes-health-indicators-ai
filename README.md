@@ -116,18 +116,19 @@ Divisão dos dados em treino e teste
 Normalização das variáveis numéricas com StandardScaler
 Balanceamento do dataset com técnicas como SMOTE ou class_weight
 
- - Modelos previstos:
-Regressão Logística
-Random Forest
-Métricas de avaliação:
-Accuracy
-Precision
-Recall
-F1-score
-Matriz de Confusão
+- Modelos previstos:
+Regressão Logística, 
+Random Forest,
+
+- Métricas de avaliação:
+Accuracy, 
+Precision, 
+Recall, 
+F1-score, 
+Matriz de Confusão, 
 ROC-AUC
 
- - Objetivo da etapa:
+- Objetivo da etapa:
 Treinar e avaliar modelos capazes de identificar padrões associados ao Diabetes Tipo 2, comparando desempenho e capacidade preditiva dos algoritmos.
 
 
