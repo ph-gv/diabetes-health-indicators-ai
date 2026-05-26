@@ -9,3 +9,6 @@ __pycache__/
 # Arquivos do sistema operacional
 .DS_Store
 Thumbs.db
+
+# Modelos treinados
+notebooks/modelo_diabetes.pkl
