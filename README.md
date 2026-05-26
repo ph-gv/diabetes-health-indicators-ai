@@ -107,6 +107,29 @@ A EDA foi realizada sobre o dataset CDC Diabetes Health Indicators com o objetiv
 * Diabéticos tendem a concentrar valores mais altos de BMI e pior percepção de saúde geral
 
 
-## Licença
+Etapa 3 — Pré-processamento e Modelagem
+Nesta etapa, os dados serão preparados para treinamento dos modelos de Machine Learning voltados à predição de Diabetes Tipo 2.
 
+ - O que foi feito:
+Separação entre variáveis e variável-alvo (Diabetes_binary)
+Divisão dos dados em treino e teste
+Normalização das variáveis numéricas com StandardScaler
+Balanceamento do dataset com técnicas como SMOTE ou class_weight
+
+ - Modelos previstos:
+Regressão Logística
+Random Forest
+Métricas de avaliação:
+Accuracy
+Precision
+Recall
+F1-score
+Matriz de Confusão
+ROC-AUC
+
+ - Objetivo da etapa:
+Treinar e avaliar modelos capazes de identificar padrões associados ao Diabetes Tipo 2, comparando desempenho e capacidade preditiva dos algoritmos.
+
+
+# Licença
 Este projeto está licenciado sob a licença MIT.
