@@ -45,8 +45,11 @@ Depois feche o terminal e rode novamente:
 
 ## Etapas do desenvolvimento
 **Etapa 1 — Planejamento:** definição do tema, escolha do dataset e estruturação do repositório.
+
 **Etapa 2 — Análise Exploratória:** investigação dos dados. Dataset desbalanceado; IMC, pressão alta e colesterol são os maiores fatores de correlação com a doença.
+
 **Etapa 3 — Modelagem e Interface:** treinamento de Regressão Logística e Random Forest. Interface desenvolvida com Streamlit.
+
 **Etapa 4 — Avaliação e Ética:** métricas, análise de overfitting e reflexão sobre uso responsável da solução.
 
 ## Reflexão ética
