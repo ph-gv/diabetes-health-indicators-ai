@@ -1,138 +1,56 @@
 # IA Aplicada à Saúde: Predição de Diabetes Tipo 2
+Protótipo de Machine Learning para estimativa de risco de Diabetes Tipo 2 em adultos, com base em dados clínicos, demográficos e comportamentais.
 
-Projeto com foco no desenvolvimento de um protótipo para prevenção de doenças.
-
-## Objetivo
-
-Desenvolver um modelo de Machine Learning capaz de estimar o risco de Diabetes Tipo 2 a partir de indicadores clínicos, demográficos e comportamentais.
-
-## Tema
-
-**Diabetes Tipo 2**
-
-## Pergunta de pesquisa
-
-**É possível predizer o risco de Diabetes Tipo 2 em adultos a partir de indicadores clínicos e comportamentais, e quais fatores têm maior peso nessa predição?**
+A pergunta central do projeto: "É possível predizer o risco de Diabetes Tipo 2 em adultos a partir de indicadores clínicos e comportamentais e quais fatores têm maior peso nessa predição?"
 
 ## Dataset
+CDC Diabetes Health Indicators, disponível no Kaggle. Gerado a partir de uma pesquisa real de saúde do governo americano com mais de 250.000 registros. As variáveis cobrem aspectos clínicos (IMC, hipertensão, colesterol), comportamentais (atividade física, tabagismo, alimentação), demográficos (idade, renda, escolaridade) e de saúde geral (mobilidade, histórico cardíaco, AVC).
 
-O dataset principal utilizado no treinamento do modelo será proveniente do **Kaggle**, por oferecer volume suficiente de dados para treinamento intensivo e melhor adequação ao processo de Machine Learning.
+## Como executar
+**1. Preparar o ambiente**
+Clone o repositório e instale as bibliotecas necessárias:
+```
+* git clone https://github.com/ph-gv/diabetes-health-indicators-ai.git
+* cd diabetes-health-indicators-ai
+* pip install -r requirements.txt
+```
 
-Como complemento, serão utilizados dados do **DATASUS / OpenDataSUS** para contextualização epidemiológica e reforço da relevância social do estudo no cenário brasileiro.
+**1.2 Verificar se a pasta notebooks existe**
+No terminal, rode dir. Tem que aparecer algo tipo:
+```
+* notebooks
+* src
+* requirements.txt
+* README.md
+```
 
-### Dataset principal
+**1.3 Entrar na pasta notebooks**
+```
+* cd notebooks
+* dir
+```
+(Agora precisa aparecer: modelo_diabetes.pkl)
 
-* **CDC Diabetes Health Indicators**
-* Fonte: Kaggle
-* Contém registros reais da pesquisa BRFSS
-* Variável-alvo binária já definida: presença ou ausência de diabetes
+**1.4 Se o arquivo NÃO aparecer**
+Isso é esperado - ele está no .gitignore e não sobe com o repositório. Volte para a raiz e rode o notebook de treinamento:
 
-### Dataset complementar
+```
+* cd ..
+* python diabetes_model.ipynb
+```
+Depois feche o terminal e rode novamente:
+```
+* streamlit run src/app.py
+```
 
-* **DATASUS / OpenDataSUS**
-* Uso contextual e analítico
-* Apoio na discussão sobre relevância social e saúde pública no Brasil
+## Etapas do desenvolvimento
+**Etapa 1 — Planejamento:** definição do tema, escolha do dataset e estruturação do repositório.
+**Etapa 2 — Análise Exploratória:** investigação dos dados. Dataset desbalanceado; IMC, pressão alta e colesterol são os maiores fatores de correlação com a doença.
+**Etapa 3 — Modelagem e Interface:** treinamento de Regressão Logística e Random Forest. Interface desenvolvida com Streamlit.
+**Etapa 4 — Avaliação e Ética:** métricas, análise de overfitting e reflexão sobre uso responsável da solução.
 
-## Variáveis consideradas
+## Reflexão ética
+A IA aqui é um apoio à decisão, não um diagnóstico. O modelo foi treinado com dados americanos, validação com dados da população brasileira é necessária para garantir equidade. Dados clínicos são sensíveis e exigem proteção rigorosa. Quem decide é o profissional de saúde.
 
-### Variável-alvo
-
-* `Diabetes_binary` — 0: não diabético, 1: diabético
-
-### Variáveis clínicas
-
-* `BMI` — Índice de Massa Corporal
-* `HighBP` — Hipertensão arterial
-* `HighChol` — Colesterol alto
-* `GenHlth` — Saúde geral autorrelatada
-
-### Variáveis comportamentais
-
-* `PhysActivity` — Atividade física recente
-* `Smoker` — Tabagismo
-* `HvyAlcoholConsump` — Consumo pesado de álcool
-* `Fruits` / `Veggies` — Consumo de frutas e vegetais
-
-### Variáveis demográficas
-
-* `Age` — Faixa etária
-* `Sex` — Sexo biológico
-* `Education` — Escolaridade
-* `Income` — Renda
-
-### Variáveis de saúde
-
-* `MentHlth` — Dias com saúde mental ruim
-* `PhysHlth` — Dias com saúde física ruim
-* `DiffWalk` — Dificuldade de locomoção
-* `HeartDiseaseorAttack` — Doença cardíaca
-* `Stroke` — AVC prévio
-
-## Tecnologias previstas
-
-* Python
-* pandas
-* numpy
-* scikit-learn
-* matplotlib / seaborn
-
-## Escopo do repositório
-
-Este repositório contém a documentação inicial do projeto, servindo como base para a disciplina e para a organização do desenvolvimento.
-
-## Etapa 2 - EDA/Análise exploratória
-## Explorando o dataset CDC, tratando valores faltantes, visualizando distribuições com pandas/seaborn.
-
-Etapa 2 — Análise Exploratória de Dados (EDA)
-
-A EDA foi realizada sobre o dataset CDC Diabetes Health Indicators com o objetivo de entender a estrutura dos dados, identificar padrões e levantar hipóteses para a etapa de modelagem.
-
- - O que foi feito:
-
-  Carga e inspeção inicial — shape, tipos de dados e estatísticas descritivas básicas, 
-  Verificação de valores faltantes — dataset confirmado como completo (sem nulos), 
-  Análise de balanceamento — identificação da proporção diabético/não diabético; o dataset é desbalanceado, o que será tratado na Etapa 3, 
-  Distribuições — histogramas de BMI, faixa etária, saúde geral e outras variáveis contínuas/ordinais, 
-  Variáveis binárias — comparação do percentual de hipertensão, colesterol alto e outros fatores entre os dois grupos, 
-  BMI por grupo — boxplot comparando distribuição de IMC entre diabéticos e não diabéticos, 
-  Análise de correlações — ranking das variáveis com maior associação à variável-alvo, 
-  Heatmap de correlações — visão completa das correlações entre todas as variáveis, 
-  Resumo automático — impressão das principais conclusões no console ao final da execução.
-
- - Principais achados:
-
-O dataset não possui valores faltantes, dispensando etapas de imputação, 
-O dataset é desbalanceado: a classe não diabética é majoritária — estratégias como SMOTE ou ajuste de pesos serão consideradas na modelagem, 
-BMI, HighBP, GenHlth e HighChol apresentam as maiores correlações com a variável-alvo, 
-Diabéticos tendem a concentrar valores mais altos de BMI e pior percepção de saúde geral.
-
-
-
-
-Etapa 3 — Pré-processamento e Modelagem
-Nesta etapa, os dados serão preparados para treinamento dos modelos de Machine Learning voltados à predição de Diabetes Tipo 2.
-
- - O que foi feito:
-Separação entre variáveis e variável-alvo (Diabetes_binary)
-Divisão dos dados em treino e teste
-Normalização das variáveis numéricas com StandardScaler
-Balanceamento do dataset com técnicas como SMOTE ou class_weight
-
-- Modelos previstos:
-Regressão Logística, 
-Random Forest
-
-- Métricas de avaliação:
-Accuracy, 
-Precision, 
-Recall, 
-F1-score, 
-Matriz de Confusão, 
-ROC-AUC
-
-- Objetivo da etapa:
-Treinar e avaliar modelos capazes de identificar padrões associados ao Diabetes Tipo 2, comparando desempenho e capacidade preditiva dos algoritmos.
-
-
-# Licença
-Este projeto está licenciado sob a licença MIT.
+## Tecnologias
+Python 3 · Scikit-learn · Pandas · NumPy · Seaborn · Matplotlib · Streamlit · Licença MIT
